@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#heightChange {
+    margin: 0;
+}
+
+.heightExtend {
+    height: 200px;
+}
+
+.heightIgnore {
+    height: 0px;
+}
+
+.hideDiv {
+    display: none;
+}
+
+.showDiv {
+    display: block;
+}
+
+.delMrginTop {
+    margin-top: -50px;
+}

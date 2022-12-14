@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+    <title>My Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="برنامج مكتبة تجريبي أرشفة اضافة حذف انشاء مكتبات جديدة">
+    <meta name="keywords" content="برنامج مكتبة تجريبي أرشفة اضافة حذف انشاء مكتبات جديدة">
+    <meta name="author" content="Aladdin programmer and developer علاء الدين مبرمج ومطور">
+    <meta property="og:title" content="برنامج مكتبة تجريبي أرشفة اضافة حذف انشاء مكتبات جديدة" />
+    <meta property="og:description" content="برنامج مكتبة تجريبي أرشفة اضافة حذف انشاء مكتبات جديدة" />
+    <meta property="og:image" content="img/lib.png" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="315" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary-large-image" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="برنامج مكتبة تجريبي أرشفة اضافة حذف انشاء مكتبات جديدة" />
+    <meta name="twitter:image" content="img/lib.png" />
+    <link rel="icon" href="img/lib.png" />
+    <link rel="shortcut" href="img/lib.png" />
+    <link rel="apple-touch-icon" href="img/lib.png" />
+    <link href="css/overlay.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new-google-icons/icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+
+    </style>
+</head>
+
+<body style="background-color: #1c1401; color:#f5f8fa;">
+    <div id="header" class="container sticky-top" style="max-width: 850px; font-size: 1.1rem;">
+        <div class="navbar navbar-light" style="width:100%; background-color: #67879f;">
+            <div class="" style="width:100%; display: flex; justify-content: center;padding: 5px;">
+                <div class="" style="margin:auto 10px; width:33%; text-align: center;" title="البحث عن عنصر أو كتاب">
+                    <label class="material-icons" for="oldR"
+                        style="vertical-align: middle; cursor: pointer;">search</label>
+                    <input style=" cursor: pointer;" type="radio" name="selectMood" required checked
+                        onchange="disable2()" id="oldR">
+                </div>
+                <div class="" style="margin:auto 10px; width: 33%; text-align: center;" title="إدراج عنصر أو كتاب">
+                    <label class="material-icons" for="newB"
+                        style="vertical-align: middle; cursor: pointer;">library_add</label>
+                    <input style=" cursor: pointer;" type="radio" name="selectMood" required onchange="disable2()"
+                        id="newB">
+                </div>
+                <div class="" style="margin:auto 10px; width: 33%; text-align: center;" title="انشاء مكتبة جديدة">
+                    <label class="material-icons" for="newR"
+                        style="vertical-align: middle; cursor: pointer;">library_books</label>
+                    <input style=" cursor: pointer;" type="radio" name="selectMood" required onchange="disable2()"
+                        id="newR">
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="container" style="max-width: 850px; margin-top: 10px;">
+        <div id="topDivs" class="row">
+            <div class="col">
+                <form id="searchLibForm" class="form">
+                    <div>
+                        <select onchange="electChange(select)" class="form-select" id="select" name="select"
+                            style="border: none; box-shadow: none;">
+                            <option value="choose">اختر مكتبتك</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <input class="form-control" type="text" name="searchInput" id="searchInput"
+                            placeholder="بحث  . . . " style="margin-top: 5px;">
+                        <button class="btn btn-primary" type="submit" id="searchButton"
+                            style="margin-top: 5px; width: 100%; box-shadow: none;">بحث</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <!--  <form id="insertLibForm" class="form"> -->
+                <div class="form-control" style="border: none;">ادخل اسم المكتبة</div>
+                <input style="margin-top: 5px;" class="form-control" type="text" name="insertLib" id="insertLib"
+                    required disabled>
+                <button class="btn btn-danger" type="submit" id="insertLibButton" disabled
+                    style="margin-top: 5px; width: 100%; box-shadow: none;" onclick="lib_add()">إدخال</button>
+                <!-- </form> -->
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pt-3">
+                <form id="insertBook" class="form">
+
+                    <div style="margin-top: 6px;" class="">ادراج عنصر جديد</div>
+                    <select onchange="electChange(selectI)" disabled class="form-select" id="selectI" name="selectI"
+                        style="border: none; box-shadow: none;">
+                        <option>اختر مكتبتك</option>
+                    </select>
+
+
+                    <div>اسم الكتاب</div>
+                    <input disabled class="form-control" type="text" name="bookName" id="bookName" required>
+                    <div>مؤلف الكتاب</div>
+                    <input disabled class="form-control" type="text" name="auterName" id="auterName"
+                        placeholder="اختياري . . . Optional">
+                    <div>نبذة عن الكتاب</div>
+                    <input disabled class="form-control" type="text" name="bookClass" id="bookClass" required>
+                    <div>في صف رقم</div>
+                    <input disabled onblur="poupKeyBoard('heightChange', 'topDivs', 'header')"
+                        onfocus="poupKeyBoard('heightChange', 'topDivs', 'header')" class="form-control" type="number"
+                        name="rowNumber" id="rowNumber" required>
+                    <div>في قسم</div>
+                    <input disabled onblur="poupKeyBoard('heightChange', 'topDivs', 'header')"
+                        onfocus="poupKeyBoard('heightChange', 'topDivs', 'header')" class="form-control" type="text"
+                        name="bookSection" id="bookSection" required>
+                    <button disabled type="submit" class="btn btn-success mt-2" name="submitAddBook" id="submitAddBook"
+                        style="margin-top: 5px; width: 100%; box-shadow: none;">ادراج</button>
+                </form>
+
+                <center style="direction: ltr; margin-top: 15px;">
+                    <h6>Designed & Developed By: </h6>
+                    <fieldset style="border: 2px 2px gold; border-radius: 14px;">
+                        <legend><span style="cursor: pointer; color: #ffc107;" onclick="openNav()">&copy;Aladdin</span>
+                        </legend>
+
+                    </fieldset>
+                </center>
+            </div>
+
+            <div class="col pt-3">
+                <div class="container" style="color: wheat;"> اخراج النتائج</div>
+
+                <div class="container card-header shadow p-3 mb-5 bg-white rounded" id="searchResult" style="width: 100%; height: 470px; overflow: auto;
+                         border-radius:10px; margin-top: 5px; color: #1c1401;">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="heightChange" class="heightExtend hideDiv"></div>
+    <!-- <center style="direction: ltr; margin-top: -15px;">
+        <h6>Designed & Developed By: </h6>
+        <fieldset style="border: 2px 2px gold; border-radius: 14px;">
+            <legend><span style="cursor: pointer; color: #ffc107;" onclick="openNav()">&copy;Aladdin</span></legend>
+
+        </fieldset>
+    </center> -->
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span style="color: red;">&times;</span></a>
+        <div class="overlay-content">
+            <a href="#"><span onclick="divDisplay('about')">About</span></a>
+            <center id="about" style="height:100px; display: none;">
+                <p><span
+                        style="background-color: #198754; color: #fff; padding-left: 2px; padding-right: 2px; padding-bottom: 2px;">برنامج
+                        مكتبة احترافي تسطيع من خلاله</span><br>
+                    <span
+                        style="background-color: #198754; color: #fff; padding-left: 2px; padding-right: 2px; padding-bottom: 2px;">انشاء
+                        أكثر من مكتبة بنفسك وارشفة كل واحدة على حده</span><br>
+                    <span
+                        style="background-color: #ffc107; color: #000; padding-left: 2px; padding-right: 2px;">password:
+                        <b>Aladdin</b></span>
+                </p>
+            </center>
+            <a href="#"><span onclick="divDisplay('services')">DataBases</span></a>
+            <center id="services" style="display: none;">
+                <button class="btn btn-success" onclick="getLibs();">getDbases</button>
+                <button class="btn btn-danger" onclick="insertLibDbase(libsName.value.trim())">insertDbase</button><br>
+                <button class="btn btn-primary" style="margin-top: 5px; display: none;">backUpDbase</button>
+
+                <select class="form-select" name="libsName" onchange="electChange(libsName)" id="libsName"
+                    style="display: none; width:80%; direction: ltr; margin-top: 5px;">
+                    <option value="choose">اختر مكتبتك</option>
+                </select>
+                <br>
+                <button id="confirmBackUp" class="btn btn-warning" style="display:none; margin-top: 5px;"
+                    onclick="getCustomLocalStorage(libsName.value.trim())">confirmBackUp</button>
+                <br>
+
+                <textarea class="form-control" name="libCodes" id="libCodes" readonly
+                    style="height:100px; width:80%; display: none; direction: ltr; margin-top: 5px;"></textarea>
+                <br>
+                <button id="prepareInsert" onclick="prepareInsert()" class="btn btn-warning">prepareInsert</button>
+            </center>
+            <!--  <a href="#"><span onclick="divDisplay('clients')">Projects</span></a> -->
+            <center id="clients" style="display: none;">
+
+            </center>
+            <a href="#"><span onclick="divDisplay('contact')">Contact-Us</span></a>
+            <center id="contact" style="height: 125px; display: none; color:#ffc107; overflow:auto;">
+                <p style="direction: ltr;">&copy;email: <span
+                        style="padding: 2px; color: wheat; text-shadow: 1px 1px 2px black; border-radius: 7px;"
+                        class="bg-success">
+                        samaladdin70@gmail.com</span></p>
+                <p style="direction: ltr;">Tel: <span
+                        style="padding: 2px; color: wheat; text-shadow: 1px 1px 2px black; border-radius: 7px;"
+                        class="bg-success">01551467087</span></p>
+                <p style="direction: ltr;">Country: <span
+                        style="padding: 2px; color: wheat; text-shadow: 1px 1px 2px black; border-radius: 7px;"
+                        class="bg-danger m-2">Egypt.</span></p>
+            </center>
+        </div>
+    </div>
+    <script>
+        var libCodes = document.getElementById("libCodes");
+        var libsName = document.getElementById("libsName");
+        var confirmBackUp = document.getElementById("confirmBackUp");
+        function openNav() {
+            document.getElementById("myNav").style.height = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.height = "0%";
+        }
+        function divDisplay(id) {
+            if (document.getElementById(id).style.display == "none") {
+                document.getElementById(id).style.display = 'block';
+            } else {
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+
+        function insertLibDbase(libName) {
+            if (confirm(`هل تريد حقا ادراج قاعدة بيانات خارجية الى قاعدة البيانات ${libsName.value} ؟`)) {
+                let lib = JSON.parse(localStorage.getItem(libName));
+                let libDbase = JSON.parse(libCodes.value.trim());
+
+
+                libDbase.forEach(element => {
+
+                    lib.push({ "BookName": element.BookName, "BookAutor": element.BookAutor, "BookClass": element.BookClass, "BookRow": element.BookRow, "BookSection": element.BookSection });
+                    localStorage.setItem(libName, JSON.stringify(lib));
+                });
+                electChange(select);
+                libCodes.style.direction = "rtl";
+                libCodes.style.textAlign = "center";
+                libCodes.style.color = "#198754";
+                libCodes.value = "تم النسخ بنجاح";
+                libsName.value = "";
+            } else {
+                libCodes.setAttribute("readonly", "readonly");
+                libCodes.style.direction = "rtl";
+                libCodes.style.textAlign = "center";
+                libCodes.style.color = "red";
+                libCodes.value = "تم إلغاء العملية . .";
+            }
+
+        }
+
+        function getLocalStorage() {
+            let a = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                let k = localStorage.key(i);
+                let v = localStorage.getItem(k);
+                a[k] = v;
+            }
+            let s = JSON.stringify(a);
+            return s;
+        }
+
+        function getCustomLocalStorage(libName) {
+
+            libCodes.style.direction = "ltr";
+            libCodes.style.textAlign = "left";
+            libCodes.style.color = "blue";
+            libCodes.setAttribute("readonly", "readonly");
+            let a;
+
+            // let k = localStorage.key(1);
+            // let v = localStorage.getItem(k);
+            let v = localStorage.getItem(libName);
+            // a[k] = v;
+            // a["myLib_myLib"] = v;
+            //a.push(v);
+            a = v;
+            //  let s = JSON.stringify(a);
+            let s = a;
+            libCodes.value = s;
+
+            libCodes.style.direction = "ltr";
+            libCodes.style.textAlign = "left";
+            return s;
+
+        }
+
+        function getLibs() {
+            libCodes.value = "";
+            libCodes.setAttribute("readonly", "readonly");
+            libCodes.style.direction = "rtl";
+            libCodes.style.textAlign = "right";
+            libCodes.style.color = "blue";
+            libCodes.style.width = "80%";
+            // document.getElementById("clipboardCopy").style.display = "none";
+            libCodes.style.display = "inline";
+            libsName.style.display = "inline";
+            confirmBackUp.style.display = "inline";
+            /*  for (let index = 0; index < JSON.parse(localStorage.getItem("libs")).length; index++) {
+                  // console.log(localStorage.key(index));
+                  // document.getElementById("output").innerHTML += '<h3>' + localStorage.key(index) + ' :' + index + '</h3>';
+                  libCodes.value += `${JSON.parse(localStorage.getItem("libs"))[index]}\n`;
+                  // or
+                  // libCodes.value += localStorage.key(index) + `\n`;
+              } */
+            libCodes.value = `1 - الرجاء الضغط على عنصر الأختيار أعلاه لإختيار مكتبة\n2 - لو أردت أخذ نسخة من قاعدة بيانات المكتبة المحددة اضغط على زر confirmBackup\n3 - في حالة ان اردت ادراج قاعدة بيانات قمت بحفظها مسبقاً اتبع الاتي:
+            i - افتح الملف المخزن به قاعدة بياناتك وقم بنسخ كل محتوياته
+            ii - قم بالضغط على زر prepareInsert  ومن ثم الصق  قاعدة بياناتك التي نسختها في الخطوة السابقة
+            iii - قم بالضغط على زر insertDbase`;
+        }
+        function prepareInsert() {
+            libCodes.value = "";
+            libCodes.removeAttribute('readonly');
+            libCodes.style.direction = "ltr";
+            libCodes.style.textAlign = "left";
+            libCodes.style.color = "blue";
+        }
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
