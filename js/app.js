@@ -35,9 +35,9 @@ function lib_add() {
             // window['MyLib_' + insertLib.value] = [];
             window[insertLib.value] = [];
 
-            // console.log(window['MyLib_'+insertLib.value]);
+           
             localStorage.setItem("selectLib", JSON.stringify(select.innerHTML));
-            //  localStorage.setItem("myLib_" + insertLib.value, JSON.stringify(window['MyLib_' + insertLib.value]));
+            
             localStorage.setItem(insertLib.value, JSON.stringify(window[insertLib.value]));
             insertLib.value = "";
         } else {
@@ -50,12 +50,11 @@ function lib_add() {
                 libsName.innerHTML += '<option>' + insertLib.value + '</option>\n';
                 libs.push(insertLib.value);
                 localStorage.setItem("libs", JSON.stringify(libs));
-                // to make a dynamic varible
-                // window['MyLib_' + insertLib.value] = [];
+                
                 window[insertLib.value] = [];
-                //  console.log(window['MyLib_'+insertLib.value]);
+                
                 localStorage.setItem("selectLib", JSON.stringify(select.innerHTML));
-                //  localStorage.setItem("myLib_" + insertLib.value, JSON.stringify(window['MyLib_' + insertLib.value]));
+                
                 localStorage.setItem(insertLib.value, JSON.stringify(window[insertLib.value]));
                 insertLib.value = "";
             }
@@ -68,13 +67,12 @@ function lib_add() {
         libsName.innerHTML += '<option>' + insertLib.value + '</option>\n';
         libs.push(insertLib.value);
         localStorage.setItem("libs", JSON.stringify(libs));
-        // to make a dynamic varible
-        // window['MyLib_' + insertLib.value] = [];
+        
         window[insertLib.value] = [];
 
-        //  console.log(window['MyLib_'+insertLib.value]);
+        
         localStorage.setItem("selectLib", JSON.stringify(select.innerHTML));
-        //  localStorage.setItem("myLib_" + insertLib.value, JSON.stringify(window['MyLib_' + insertLib.value]));
+        
         localStorage.setItem(insertLib.value, JSON.stringify(window[insertLib.value]));
         insertLib.value = "";
 
@@ -84,16 +82,12 @@ function lib_add() {
 
 function electChange(select) {
     if (select.value != "choose") {
-        // var lib = JSON.parse(localStorage.getItem("myLib_" + select.value));
         var lib = JSON.parse(localStorage.getItem(select.value));
-        //  console.log(lib);
         if (newB.checked == true) {
             insertBook.onsubmit = (form) => {
                 form.preventDefault();
 
                 lib.push({ "BookName": bookName.value, "BookAutor": auterName.value, "BookClass": bookClass.value, "BookRow": rowNumber.value, "BookSection": bookSection.value });
-                //  console.log(lib);
-                // localStorage.setItem("myLib_" + select.value, JSON.stringify(lib));
                 localStorage.setItem(select.value, JSON.stringify(lib));
                 bookName.value = "";
                 auterName.value = "";
@@ -117,15 +111,12 @@ function electChange(select) {
                 searchResult.innerHTML = "";
                 searchLibForm.onsubmit = (form) => {
                     form.preventDefault();
-                    // lib = JSON.parse(localStorage.getItem("myLib_" + select.value));
                     lib = JSON.parse(localStorage.getItem(select.value));
-                    // console.log(lib);
 
                     searchResult.innerHTML = "";
                     if (searchInput.value.length >= 3) {
                         lib.forEach(element => {
-                            //  searchResult.innerHTML = "";
-                            // console.log(element);
+                            
                             if (element.BookName.toLowerCase().search(searchInput.value.toLowerCase()) != -1 || element.BookAutor.toLowerCase().search(searchInput.value.toLowerCase()) != -1 || element.BookClass.toLowerCase().search(searchInput.value.toLowerCase()) != -1) {
                                 searchResult.innerHTML += '<div class="container card-header shadow p-3 mb-5 bg-white rounded"><h2> اسم الكتاب: <br>' + element.BookName + '</h2> <h3 style="color:darkred;"> اسم المؤلف: <br>' +
                                     element.BookAutor + '</h3><p style="color:blue;">كلمات مفتاحية:<br>' + element.BookClass +
@@ -255,10 +246,5 @@ onload = () => {
         selectI.innerHTML = JSON.parse(localStorage.getItem("selectLib"));
         libsName.innerHTML = JSON.parse(localStorage.getItem("selectLib"));
     }
-    /* else {
-         var myLib = ['<option value="choose">اختر مكتبتك</option>'];
-     } 
-     myLib.forEach(element => {
-         select += element;
-     }); */
+    
 }

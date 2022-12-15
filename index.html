@@ -84,7 +84,8 @@
             </div>
             <div class="col">
                 <!--  <form id="insertLibForm" class="form"> -->
-                <div class="form-control" style="border: none;">ادخل اسم المكتبة</div>
+                <div class="form-control" style="border: none;">انشيء مكتبة جديدة <span class="material-icons"
+                        style="vertical-align: middle; font-size: 16px;">library_books</span></div>
                 <input style="margin-top: 5px;" class="form-control" type="text" name="insertLib" id="insertLib"
                     required disabled>
                 <button class="btn btn-danger" type="submit" id="insertLibButton" disabled
@@ -98,7 +99,8 @@
             <div class="col pt-3">
                 <form id="insertBook" class="form">
 
-                    <div style="margin-top: 6px;" class="">ادراج عنصر جديد</div>
+                    <div style="margin-top: 5px;" class="">ادراج عنصر جديد <span class="material-icons"
+                            style="vertical-align: middle; font-size: 16px;">library_add</span></div>
                     <select onchange="electChange(selectI)" disabled class="form-select" id="selectI" name="selectI"
                         style="border: none; box-shadow: none;">
                         <option>اختر مكتبتك</option>
@@ -147,13 +149,7 @@
 
     </div>
     <div id="heightChange" class="heightExtend hideDiv"></div>
-    <!-- <center style="direction: ltr; margin-top: -15px;">
-        <h6>Designed & Developed By: </h6>
-        <fieldset style="border: 2px 2px gold; border-radius: 14px;">
-            <legend><span style="cursor: pointer; color: #ffc107;" onclick="openNav()">&copy;Aladdin</span></legend>
 
-        </fieldset>
-    </center> -->
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span style="color: red;">&times;</span></a>
         <div class="overlay-content">
@@ -274,14 +270,10 @@
             libCodes.setAttribute("readonly", "readonly");
             let a;
 
-            // let k = localStorage.key(1);
-            // let v = localStorage.getItem(k);
             let v = localStorage.getItem(libName);
-            // a[k] = v;
-            // a["myLib_myLib"] = v;
-            //a.push(v);
+
             a = v;
-            //  let s = JSON.stringify(a);
+
             let s = a;
             libCodes.value = s;
 
@@ -298,17 +290,11 @@
             libCodes.style.textAlign = "right";
             libCodes.style.color = "blue";
             libCodes.style.width = "80%";
-            // document.getElementById("clipboardCopy").style.display = "none";
+
             libCodes.style.display = "inline";
             libsName.style.display = "inline";
             confirmBackUp.style.display = "inline";
-            /*  for (let index = 0; index < JSON.parse(localStorage.getItem("libs")).length; index++) {
-                  // console.log(localStorage.key(index));
-                  // document.getElementById("output").innerHTML += '<h3>' + localStorage.key(index) + ' :' + index + '</h3>';
-                  libCodes.value += `${JSON.parse(localStorage.getItem("libs"))[index]}\n`;
-                  // or
-                  // libCodes.value += localStorage.key(index) + `\n`;
-              } */
+
             libCodes.value = `1 - الرجاء الضغط على عنصر الأختيار أعلاه لإختيار مكتبة\n2 - لو أردت أخذ نسخة من قاعدة بيانات المكتبة المحددة اضغط على زر confirmBackup\n3 - في حالة ان اردت ادراج قاعدة بيانات قمت بحفظها مسبقاً اتبع الاتي:
             i - افتح الملف المخزن به قاعدة بياناتك وقم بنسخ كل محتوياته
             ii - قم بالضغط على زر prepareInsert  ومن ثم الصق  قاعدة بياناتك التي نسختها في الخطوة السابقة
